@@ -29,8 +29,7 @@ echo "####################################"
 for cf_ip4 in $CF_IPV4; do
     echo "set_real_ip_from $cf_ip4;" >> /etc/nginx/conf.d/cloudflare.conf
     if [ "$CF_UFW_SETUP" = "y" ]; then
-        ufw allow from $cf_ip4 to any port 80
-        ufw allow from $cf_ip4 to any port 443
+        ufw allow proto tcp from $cf_ip4 to any port 80,443 comment 'for CloudFlare'
     fi
 done
 echo "####################################"
@@ -39,8 +38,7 @@ echo "####################################"
 for cf_ip6 in $CF_IPV6; do
     echo "set_real_ip_from $cf_ip6;" >> /etc/nginx/conf.d/cloudflare.conf
     if [ "$CF_UFW_SETUP" = "y" ]; then
-        ufw allow from $cf_ip6 to any port 80
-        ufw allow from $cf_ip6 to any port 443
+        ufw allow proto tcp from $cf_ip6 to any port 80,443 comment 'for CloudFlare'
     fi
 done
 echo 'real_ip_header CF-Connecting-IP;' >> /etc/nginx/conf.d/cloudflare.conf
