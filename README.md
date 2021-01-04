@@ -26,13 +26,11 @@ If the previous command return nothing, http_realip_module isn't available
 Nginx configuration only
 
 ```bash
-bash <(wget -O - vtb.cx/nginx-cloudflare || curl -sL vtb.cx/nginx-cloudflare)
+sudo ./nginx-cloudflare-real-ip.sh
 ```
 
 Nginx configuration + UFW configuration
 
 ```bash
-bash <(wget -O - vtb.cx/nginx-cloudflare || curl -sL vtb.cx/nginx-cloudflare) --ufw
+sudo ./nginx-cloudflare-real-ip.sh --ufw
 ```
-
-Published & maintained by [VirtuBox](https://virtubox.net)
